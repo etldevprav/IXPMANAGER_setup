@@ -53,6 +53,9 @@
                         Speed
                     </th>
                     <th>
+                        Raw Speed
+                    </th>
+                    <th>
                         Action
                     </th>
                 </tr>
@@ -82,10 +85,14 @@
                                 }
                                 ?>
                             </td>
-                            <td data-order="<?= $speed ?>">
+                            <td>
                                 <?= $t->scaleBits( $speed*1000*1000, 0 ) ?>
                             </td>
+                            <td>
+                                <?= $speed ?>
+                            </td>
                         <?php else: ?>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -120,23 +127,6 @@
     <?= $t->insert( 'interfaces/virtual/js/interface' ); ?>
 
     <script>
-
-        $( document ).ready(function() {
-
-           $('#table-vi').show();
-
-           $('#table-vi').DataTable( {
-               stateSave: true,
-               stateDuration : DATATABLE_STATE_DURATION,
-               responsive: true,
-               columnDefs: [
-                   { responsivePriority: 1, targets: 0 },
-                   { responsivePriority: 2, targets: -1 },
-                   { type: 'num', targets: [ 4 ] },
-               ],
-           } );
-        });
-
 
         /**
          * on click even allow to delete a Virtual Interface
